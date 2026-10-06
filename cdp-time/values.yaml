@@ -8,7 +8,7 @@ image:
   repository: cabhub/cdp
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "84f58f1"
+  tag: "5fd915b"
 
 imagePullSecrets: []
 nameOverride: ""
