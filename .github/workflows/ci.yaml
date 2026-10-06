@@ -27,3 +27,15 @@ jobs:
       
       - name: Push Docker image
         run: docker push cabhub/cdp:${{ env.SHORT_SHA }}
+
+      - name: Configure git author
+        run: |
+          git config --global user.name "dammyng"
+          git config --global user.email "eidetic@outlook.com"
+
+      - name: Update Helm values.yaml
+        run: |
+          sed -i "s|tag:.*|tag: \"${{ env.SHORT_SHA }}\"|" cdp-time/values.yaml
+          git add cdp-time/values.yaml
+          git commit -m "Update image tag to ${{ env.SHORT_SHA }}"
+          git push origin main
